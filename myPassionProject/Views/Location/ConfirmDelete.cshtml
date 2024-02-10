@@ -1,0 +1,20 @@
+﻿@model myPassionProject.Models.LocationDto
+
+@{
+    ViewBag.Title = "ConfirmDelete";
+}
+
+<h2>Are you Sure you want to delete this Location?</h2>
+
+<form method="POST" action="/Location/Delete/@Model.LocationId">
+    <input type="text" style="display:none;" name="LocationId" value="@Model.LocationId" />
+    <div>
+        @Model.LocationName
+    </div>
+
+    <input type="submit" value="Confirm" />
+</form>
+
+<div>
+    <a href="/Location/List">Back to List</a>
+</div>

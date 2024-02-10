@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create Organization</h2>
+<form action="/Organization/Create" method="post">
+    <div>
+        <label>LocationId:</label> <input type="number" name="LocationId" />
+    </div>
+    <div>
+        <label>Name:</label> <input type="text" name="OrganizationName" />
+    </div>
+    <div>
+        <label>Contact:</label> <input type="text" name="OrganizationContact" />
+    </div>
+ 
+    <div>
+        <input type="submit" value="Add Organization" />
+    </div>
+</form>

@@ -1,0 +1,19 @@
+﻿@model IEnumerable<myPassionProject.Models.EventDto>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+@foreach (var e in Model)
+{
+    <h2><a href="/Event/Details/@e.EventId">@e.EventName</a></h2>
+    <div>@e.registrationWebsite</div>
+    <div>@e.OrganizationName</div>
+    <div>@e.LocationName</div>
+
+    <a href="/Event/Edit/@e.EventId">Edit Event</a>
+    <a href="/Event/ConfirmDelete/@e.EventId">Delete Event</a>
+}
+
+@*Quick access to the create page*@
+<a href="Event/New">Add a new Event!</a> 

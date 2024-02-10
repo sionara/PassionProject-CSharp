@@ -1,0 +1,26 @@
+﻿@model myPassionProject.Models.OrganizationDto
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit Organization</h2>
+
+<form method="POST" action="/Organization/Update/@Model.OrganizationId">
+    <input type="text" style="display:none;" name="OrganizationId" value="@Model.OrganizationId" />
+    <div>
+        <label>Name</label>
+        <input type="text" name="OrganizationName" value="@Model.OrganizationName" />
+    </div>
+    <div>
+        <label>OrganizationId</label>
+        <input type="number" name="OrganizationId" value="@Model.OrganizationId" />
+    </div>
+    <div>
+        <label>OrganizationContact</label>
+        <input type="text" name="LocationId" value="@Model.OrganizationContact" />
+    </div>
+    <input type="submit" value="Edit Organization" />
+</form>
+
+<a href="/Organization/List">Back to List</a>

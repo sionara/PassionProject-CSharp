@@ -1,0 +1,30 @@
+﻿@model myPassionProject.Models.EventDto
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit Event</h2>
+
+<form method="POST" action="/Event/Update/@Model.EventId">
+    <input type="text" style="display:none;" name="EventId" value="@Model.EventId" />
+    <div>
+        <label>Name</label>
+        <input type="text" name="EventName" value="@Model.EventName" />
+    </div>
+    <div>
+        <label>Registration</label>
+        <input type="text" name="RegistrationWebsite" value="@Model.registrationWebsite" />
+    </div>
+    <div>
+        <label>OrganizationId</label>
+        <input type="number" name="OrganizationId" value="@Model.OrganizationId" />
+    </div>
+    <div>
+        <label>LocationId</label>
+        <input type="number" name="LocationId" value="@Model.LocationId" />
+    </div>
+    <input type="submit" value="Edit Event" />
+</form>
+
+<a href="/Event/List">Back to List</a>

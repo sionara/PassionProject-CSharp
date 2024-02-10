@@ -1,0 +1,16 @@
+﻿@model IEnumerable<myPassionProject.Models.OrganizationDto>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+@foreach (var O in Model)
+{
+    <h2><a href="/Organization/Details/@O.OrganizationId">@O.OrganizationName</a></h2>
+    <div>@O.OrganizationContact</div>
+
+    <a href="/Organization/Edit/@O.OrganizationId">Edit Organization</a>
+    <a href="/Organization/ConfirmDelete/@O.OrganizationId">Delete Organization</a>
+}
+
+<a href="/Organization/new">Add a new Organization!</a>

@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create Event</h2>
+<form action="/Location/Create" method="post">
+    <div>
+        <label>Name:</label> <input type="text" name="locationName" />
+    </div>
+    <div>
+        <label>LocationAddress:</label> <input type="text" name="LocationAddress" />
+    </div>
+    <div>
+        <label>LocationId:</label> <input type="number" name="LocationId" />
+    </div>
+    <div>
+        <input type="submit" value="Add Location" />
+    </div>
+</form>
