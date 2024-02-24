@@ -1,4 +1,4 @@
-﻿@model myPassionProject.Models.EventDto
+﻿@model myPassionProject.Models.ViewModels.UpdateEvent
 
 @{
     ViewBag.Title = "Edit";
@@ -6,25 +6,42 @@
 
 <h2>Edit Event</h2>
 
-<form method="POST" action="/Event/Update/@Model.EventId">
-    <input type="text" style="display:none;" name="EventId" value="@Model.EventId" />
+<div>
+    <a class="btn btn-primary mb-4" role="button" href="/Event/Details/@Model.SelectedEvent.EventId">Back to Details</a>
+</div>
+
+<form method="POST" action="/Event/Update/@Model.SelectedEvent.EventId">
+    <input type="text" style="display:none;" name="EventId" value="@Model.SelectedEvent.EventId" />
     <div>
         <label>Name</label>
-        <input type="text" name="EventName" value="@Model.EventName" />
+        <input type="text" name="EventName" value="@Model.SelectedEvent.EventName" />
     </div>
     <div>
         <label>Registration</label>
-        <input type="text" name="RegistrationWebsite" value="@Model.registrationWebsite" />
+        <input type="text" name="RegistrationWebsite" value="@Model.SelectedEvent.registrationWebsite" />
     </div>
     <div>
-        <label>OrganizationId</label>
-        <input type="number" name="OrganizationId" value="@Model.OrganizationId" />
+        <label>Organization ID:</label>
+
+        <select name="OrganizationID">
+            @foreach (var organization in Model.organizationOptions)
+            {
+                <option value="@organization.OrganizationId">@organization.OrganizationName</option>
+
+            }
+        </select>
     </div>
+
     <div>
-        <label>LocationId</label>
-        <input type="number" name="LocationId" value="@Model.LocationId" />
+        <label>Location ID:</label>
+
+        <select name="LocationID">
+            @foreach (var locations in Model.locationOptions)
+            {
+                <option value="@locations.LocationId">@locations.LocationName</option>
+
+            }
+        </select>
     </div>
     <input type="submit" value="Edit Event" />
 </form>
-
-<a href="/Event/List">Back to List</a>

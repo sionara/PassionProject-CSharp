@@ -16,6 +16,12 @@ namespace myPassionProject.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+        /// <summary>
+        /// Returns all the Organizations from the Db
+        /// </summary>
+        /// <returns>
+        /// List of OrganizationDtos
+        /// </returns>
         // GET: api/OrganizationData/ListOrganizations
         [HttpGet]
         public IEnumerable<OrganizationDto> ListOrganizations()
@@ -33,8 +39,17 @@ namespace myPassionProject.Controllers
             return OrganizationDto;
         }
 
+        /// <summary>
+        /// Returns a particular Organization with id = {id}
+        /// </summary>
+        /// <param name="id">id of an organization</param>
+        /// <returns>
+        /// Not Found(404)
+        /// or
+        /// Organization objec
+        /// </returns>
         // GET: api/OrganizationData/FindOrganization/5
-        [ResponseType(typeof(Organization))]
+        [ResponseType(typeof(OrganizationDto))]
         [HttpGet]
         public IHttpActionResult FindOrganization(int id)
         {
@@ -50,13 +65,24 @@ namespace myPassionProject.Controllers
                 return NotFound();
             }
 
-            return Ok(Organization);
+            return Ok(OrganizationDto);
         }
 
-        // PUT: api/OrganizationData/UpdateOrganization/5
+        /// <summary>
+        /// Updates data about a particular Organization in the system
+        /// </summary>
+        /// <param name="id">Id of an existing organization</param>
+        /// <param name="organization">JSON data of an organization</param>
+        /// <returns>
+        /// 204 (success, no response) 
+        /// BAD REQUESST (400)
+        /// or NOT FOUND (404) response.
+        /// </returns>
+        /// 
+        // POST: api/OrganizationData/UpdateOrganization/5
         [ResponseType(typeof(void))]
         [HttpPost]
-        public IHttpActionResult PutOrganization(int id, Organization organization)
+        public IHttpActionResult UpdateOrganization(int id, Organization organization)
         {
             if (!ModelState.IsValid)
             {
@@ -89,6 +115,16 @@ namespace myPassionProject.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+        /// <summary>
+        /// Adds a new organization to the system
+        /// </summary>
+        /// <param name="organization">JSON data of an organization</param>
+        /// <returns>
+        /// 201 (created)
+        /// or 400 (Bad request)
+        /// response
+        /// </returns>
+        /// 
         // POST: api/OrganizationData/AddOrganization
         [ResponseType(typeof(Organization))]
         [HttpPost]
@@ -105,7 +141,16 @@ namespace myPassionProject.Controllers
             return CreatedAtRoute("DefaultApi", new { id = organization.OrganizationId }, organization);
         }
 
-        // DELETE: api/OrganizationData/DeleteOrganization/5
+        /// <summary>
+        /// Deletes a particular organization with id = {id}
+        /// </summary>
+        /// <param name="id">Id of an existing organization</param>
+        /// <returns>
+        /// 404 not found
+        /// or 200 OK
+        /// </returns>
+        /// 
+        // POST: api/OrganizationData/DeleteOrganization/5
         [ResponseType(typeof(Organization))]
         [HttpPost]
         public IHttpActionResult DeleteOrganization(int id)

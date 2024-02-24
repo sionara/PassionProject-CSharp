@@ -1,10 +1,30 @@
-﻿@model myPassionProject.Models.LocationDto
+﻿@model myPassionProject.Models.ViewModels.DetailsLocation
 
 
 @{
-    ViewBag.Title = "View";
+    ViewBag.Title = "Details";
+}
+<div>
+    <a href="/Location/List">Go back to List of Locations</a>
+</div>
+<h2>@Model.selectedLocation.LocationName</h2>
+<a href="/Location/Edit/@Model.selectedLocation.LocationId">Edit Location</a>
+<div class="d-flex">
+    <div>
+
+        <div>Address: @Model.selectedLocation.LocationAddress</div>
+        
+    </div>
+
+</div>
+
+<div class="fw-bold">Events related to this location:</div>
+@foreach (var events in Model.hostedEvents)
+{
+    <li>
+        <a href="/Event/Details/@events.EventId">@events.EventName</a>
+    </li>
 }
 
-<a href="/Location/List">Go back to List of Locations</a>
-<h2>@Model.LocationName</h2>
-<div>@Model.LocationAddress</div>
+
+

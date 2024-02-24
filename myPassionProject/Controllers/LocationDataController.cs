@@ -17,6 +17,12 @@ namespace myPassionProject.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+        /// <summary>
+        /// Returns a list of locations in db
+        /// </summary>
+        /// <returns>
+        /// List of Location data
+        /// </returns>
         // GET: api/LocationData/ListLocations
         [HttpGet]
         public IEnumerable<LocationDto> ListLocations()
@@ -30,12 +36,20 @@ namespace myPassionProject.Controllers
                 LocationName = l.LocationName,
                 LocationAddress = l.LocationAddress
             }));
+            Debug.WriteLine(locationDtos);
 
             return locationDtos;
         }
 
+        /// <summary>
+        /// Returns a particular location based on id
+        /// </summary>
+        /// <param name="id">Id of a location</param>
+        /// <returns>
+        /// NotFound message or data of a location with id = {id}
+        /// </returns>
         // GET: api/LocationData/FindLocation/5
-        [ResponseType(typeof(Location))]
+        [ResponseType(typeof(LocationDto))]
         [HttpGet]
         public IHttpActionResult FindLocation(int id)
         {
@@ -54,9 +68,20 @@ namespace myPassionProject.Controllers
             return Ok(locationDto);
         }
 
-        // PUT: api/LocationData/UpdateLocation/5
+        /// <summary>
+        /// Updates the data of a location with id = {id} based on user input
+        /// </summary>
+        /// <param name="id">Event Id</param>
+        /// <param name="location"> JSON data of an event </param>
+        /// <returns>
+        /// 204 (success, no response) 
+        /// BAD REQUESST (400)
+        /// or NOT FOUND (404) response.
+        /// </returns>
+        // POST: api/LocationData/UpdateLocation/5
         [ResponseType(typeof(void))]
         [HttpPost]
+        [Authorize]
         public IHttpActionResult UpdateLocation(int id, Location location)
         {
             Debug.WriteLine("Method is reached.");
@@ -91,9 +116,19 @@ namespace myPassionProject.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+        /// <summary>
+        /// Adds new location into the database
+        /// </summary>
+        /// <param name="location">JSON data of a location</param>
+        /// <returns>
+        /// 201 (created)
+        /// or 400 (Bad request)
+        /// response
+        /// </returns>
         // POST: api/LocationData/AddLocation
         [ResponseType(typeof(Location))]
         [HttpPost]
+        [Authorize]
         public IHttpActionResult AddLocation(Location location)
         {
             if (!ModelState.IsValid)
@@ -107,9 +142,20 @@ namespace myPassionProject.Controllers
             return CreatedAtRoute("DefaultApi", new { id = location.LocationId }, location);
         }
 
-        // DELETE: api/LocationData/DeleteLocation/5
+        /// <summary>
+        /// Delets a location from db with id = {id}
+        /// </summary>
+        /// <param name="id">location id</param>
+        /// <returns>
+        /// 404 not found
+        /// or 200 OK
+        /// </returns>
+        /// 
+        // POST: api/LocationData/DeleteLocation/5
         [ResponseType(typeof(Location))]
         [HttpPost]
+        [Authorize]
+        
         public IHttpActionResult DeleteLocation(int id)
         {
             Location location = db.Locations.Find(id);

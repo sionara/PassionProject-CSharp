@@ -1,4 +1,5 @@
-﻿
+﻿@model myPassionProject.Models.ViewModels.CreateEvent
+
 @{
     ViewBag.Title = "Create";
 }
@@ -8,16 +9,38 @@
     <div>
         <label>Name:</label> <input type="text" name="eventName" />
     </div>
+
     <div>
         <label>Registration:</label> <input type="text" name="registrationWebsite" />
     </div>
+
+    @* show list of existing Organizations by id. *@
     <div>
-        <label>OrganizationId:</label> <input type="number" name="OrganizationId" />
+        <label>Organization Id:</label>
+
+        <select name="LocationID">
+            @foreach (var organizations in Model.organizationOptions) //this is just for locationdto, no need to specify which model you are referring to.
+            {
+                <option value="@organizations.OrganizationId">@organizations.OrganizationName</option>
+
+            }
+        </select>
     </div>
+
+    @* show list of existing locations by id. *@
     <div>
-        <label>LocationId:</label> <input type="number" name="LocationId" />
+        <label>Location ID:</label>
+
+        <select name="LocationID">
+            @foreach (var locations in Model.locationOptions) //this is just for locationdto, no need to specify which model you are referring to.
+            {
+                <option value="@locations.LocationId">@locations.LocationName</option>
+
+            }
+        </select>
     </div>
+
     <div>
-        <input type="submit" value="Add Event"/>
+        <input type="submit" value="Add Event" />
     </div>
 </form>

@@ -1,11 +1,21 @@
-﻿@model myPassionProject.Models.OrganizationDto
-
+﻿@model myPassionProject.Models.ViewModels.DetailsOrganization
 
 @{
-    ViewBag.Title = "View";
+    ViewBag.Title = "Details";
 }
 
 <a href="/Organization/List">Go back to List of Organizations</a>
-<h2>@Model.OrganizationName</h2>
-<div>@Model.OrganizationContact</div>
+
+<h2>@Model.selectedOrganization.OrganizationName</h2>
+<div>Contact info: @Model.selectedOrganization.OrganizationContact</div>
+
+<a href="/Organization/Edit/@Model.selectedOrganization.OrganizationId">Edit Organization</a>
+
+<div class="fw-bold">Events related to this location:</div>
+@foreach (var events in Model.hostedEvents)
+{
+    <li>
+        <a href="/Event/Details/@events.EventId">@events.EventName</a>
+    </li>
+}
 

@@ -1,17 +1,19 @@
 ﻿@model IEnumerable<myPassionProject.Models.LocationDto>
 @{
-    ViewBag.Title = "List";
+    ViewBag.Title = "Locations";
 }
 
-<h2>List</h2>
+<h2>@ViewBag.Title</h2>
+<div>
+    <a class="btn btn-primary" role="button" href="/Location/New">Add a new Location!</a>
+</div>
 @foreach (var l in Model)
 {
-    <h2><a href="/Location/Details/@l.LocationId">@l.LocationName</a></h2>
-    <div>@l.LocationName</div>
-    <div>@l.LocationAddress</div>
-
-    <a href="/Location/Edit/@l.LocationId">Edit Location</a>
-    <a href="/Location/ConfirmDelete/@l.LocationId">Delete Location</a>
+    <div class="border border-3 m-2">
+         <h2><a href="/Location/Details/@l.LocationId">@l.LocationName</a></h2>
+        
+         <a class="btn btn-danger" href="/Location/ConfirmDelete/@l.LocationId" role="button">Delete Location</a>
+       
+    </div>
 }
 
-<a href="/Location/New">Add a new Location!</a>
