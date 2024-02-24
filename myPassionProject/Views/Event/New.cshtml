@@ -7,18 +7,18 @@
 <h2>Create Event</h2>
 <form action="/Event/Create" method="post">
     <div>
-        <label>Name:</label> <input type="text" name="eventName" />
+        <label>Name:</label> <input type="text" name="eventName" required />
     </div>
 
     <div>
-        <label>Registration:</label> <input type="text" name="registrationWebsite" />
+        <label>Registration:</label> <input type="text" name="registrationWebsite" required/>
     </div>
 
     @* show list of existing Organizations by id. *@
     <div>
         <label>Organization Id:</label>
 
-        <select name="LocationID">
+        <select name="OrganizationID">
             @foreach (var organizations in Model.organizationOptions) //this is just for locationdto, no need to specify which model you are referring to.
             {
                 <option value="@organizations.OrganizationId">@organizations.OrganizationName</option>
@@ -44,3 +44,5 @@
         <input type="submit" value="Add Event" />
     </div>
 </form>
+
+<a href="/Event/List">Back To List</a>

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity;
 
 namespace myPassionProject.Models
 {
@@ -25,6 +26,8 @@ namespace myPassionProject.Models
 
         //an Event is connected to one location
         //a location could host different events
+
+        [ForeignKey("Location")]
         public int LocationId { get; set; }
         public virtual Location Location { get; set; }
     }

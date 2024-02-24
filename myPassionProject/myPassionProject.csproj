@@ -261,6 +261,14 @@
     <Compile Include="Migrations\202402061802097_Event.designer.cs">
       <DependentUpon>202402061802097_Event.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202402241725381_EventLocationFK.cs" />
+    <Compile Include="Migrations\202402241725381_EventLocationFK.designer.cs">
+      <DependentUpon>202402241725381_EventLocationFK.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202402241734395_EventLocationFK2.cs" />
+    <Compile Include="Migrations\202402241734395_EventLocationFK2.designer.cs">
+      <DependentUpon>202402241734395_EventLocationFK2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Event.cs" />
@@ -418,6 +426,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202402061802097_Event.resx">
       <DependentUpon>202402061802097_Event.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202402241725381_EventLocationFK.resx">
+      <DependentUpon>202402241725381_EventLocationFK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202402241734395_EventLocationFK2.resx">
+      <DependentUpon>202402241734395_EventLocationFK2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

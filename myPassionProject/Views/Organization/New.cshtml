@@ -7,13 +7,15 @@
 <form action="/Organization/Create" method="post">
 
     <div>
-        <label>Name:</label> <input type="text" name="OrganizationName" />
+        <label>Name:</label> <input type="text" name="OrganizationName" required/>
     </div>
     <div>
-        <label>Contact:</label> <input type="text" name="OrganizationContact" />
+        <label>Contact:</label> <input type="text" name="OrganizationContact" required/>
     </div>
  
     <div>
         <input type="submit" value="Add Organization" />
     </div>
 </form>
+
+<a href="/Organization/List">Back to List</a>

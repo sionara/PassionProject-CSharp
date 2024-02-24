@@ -6,13 +6,15 @@
 <h2>Create Location</h2>
 <form action="/Location/Create" method="POST">
     <div>
-        <label>Name:</label> <input type="text" name="LocationName" />
+        <label>Name:</label> <input type="text" name="LocationName" required/>
     </div>
     <div>
-        <label>LocationAddress:</label> <input type="text" name="LocationAddress" />
+        <label>LocationAddress:</label> <input type="text" name="LocationAddress" required/>
     </div>
 
     <div>
         <input type="submit" value="Add Location" />
     </div>
 </form>
+
+<a href="/Location/List">Back to List</a>
